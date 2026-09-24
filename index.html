@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerobots - Guia de Procesos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header class="header">
+        <img src="assets/logo-sin.png" alt="Aerobots" class="header-logo">
+        <h1 class="main-title">Guia de Procesos - Sistema de Ensamblaje</h1>
+        <div class="user-status" id="user-status"></div>
+    </header>
+
+    <main class="dashboard">
+        <div class="grid-container">
+
+            <a href="procesos/armado.html" class="process-card">
+                <div class="card-header">
+                    <h2>Armado</h2>
+                </div>
+                <p class="card-description">Estructura y armado de modulos</p>
+                <div class="card-status">
+                    <span class="badge aprobado">Aprobado</span>
+                </div>
+                <div class="card-footer">
+                    <span class="arrow">-></span>
+                </div>
+            </a>
+
+            <a href="procesos/mantenimiento.html" class="process-card">
+                <div class="card-header">
+                    <h2>Mantenimiento</h2>
+                </div>
+                <p class="card-description">Mantenimiento preventivo y correctivo</p>
+                <div class="card-status">
+                    <span class="badge aprobado">Aprobado</span>
+                </div>
+                <div class="card-footer">
+                    <span class="arrow">-></span>
+                </div>
+            </a>
+
+            <a href="procesos/limpieza.html" class="process-card">
+                <div class="card-header">
+                    <h2>Limpieza</h2>
+                </div>
+                <p class="card-description">Limpieza y cuidado de equipos</p>
+                <div class="card-status">
+                    <span class="badge pendiente">Pendiente</span>
+                </div>
+                <div class="card-footer">
+                    <span class="arrow">-></span>
+                </div>
+            </a>
+
+            <a href="procesos/materiales.html" class="process-card">
+                <div class="card-header">
+                    <h2>Materiales</h2>
+                </div>
+                <p class="card-description">Gestion y control de materiales</p>
+                <div class="card-status">
+                    <span class="badge aprobado">Aprobado</span>
+                </div>
+                <div class="card-footer">
+                    <span class="arrow">-></span>
+                </div>
+            </a>
+
+            <a href="procesos/preguntas.html" class="process-card">
+                <div class="card-header">
+                    <h2>Preguntas</h2>
+                </div>
+                <p class="card-description">Preguntas frecuentes y soporte</p>
+                <div class="card-status">
+                    <span class="badge aprobado">Aprobado</span>
+                </div>
+                <div class="card-footer">
+                    <span class="arrow">-></span>
+                </div>
+            </a>
+
+            <a href="#" class="process-card editor-card" id="btn-editor">
+                <div class="card-header">
+                    <h2 id="editor-card-title">Modo Editor</h2>
+                </div>
+                <p class="card-description" id="editor-card-desc">Iniciar sesion para editar procesos</p>
+                <div class="card-status">
+                    <span class="badge editor" id="editor-card-badge">Acceso restringido</span>
+                </div>
+                <div class="card-footer">
+                    <span class="arrow">-></span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="version">Aerobots System v1.0</p>
+    </footer>
+
+    <div class="modal-overlay" id="modal-login">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">X</button>
+            <h2>Iniciar Sesion</h2>
+            <p class="modal-subtitle">Acceso exclusivo para editores</p>
+            <form id="form-login">
+                <input type="email" id="login-email" placeholder="Correo electronico" required autocomplete="email">
+                <input type="password" id="login-password" placeholder="Contrasena" required autocomplete="current-password">
+                <button type="submit" id="btn-login">Entrar</button>
+            </form>
+            <p class="modal-message" id="modal-message"></p>
+        </div>
+    </div>
+
+    <script src="js/supabase-client.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

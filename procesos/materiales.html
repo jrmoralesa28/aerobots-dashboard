@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiales - Aerobots</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header class="header header-process">
+        <a href="../index.html" class="back-link"><- Volver</a>
+        <img src="../assets/logo-sin.png" alt="Aerobots" class="header-logo">
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="dashboard">
+        <div class="process-info">
+            <p class="process-info-text">Seleccione un tipo de material para ver los pasos</p>
+            <button class="btn-add" id="btn-add-equipo" style="display:none;">+ Nuevo Material</button>
+        </div>
+
+        <div class="grid-container" id="equipos-container"></div>
+    </main>
+
+    <footer class="footer">
+        <p>Aerobots System v1.0</p>
+    </footer>
+
+    <div class="modal-overlay" id="modal-new-equipo">
+        <div class="modal">
+            <button class="modal-close" id="modal-new-close">X</button>
+            <h2>Nuevo Material</h2>
+            <p class="modal-subtitle">Agrega un nuevo material a esta categoria</p>
+            <form id="form-new-equipo">
+                <label class="form-label">Nombre</label>
+                <input type="text" id="new-nombre" placeholder="Ej: Terminales" required>
+
+                <label class="form-label">Descripcion (opcional)</label>
+                <input type="text" id="new-descripcion" placeholder="Ej: Terminales electricas">
+
+                <label class="form-label">Estado</label>
+                <select id="new-estado">
+                    <option value="authorized">Aprobado</option>
+                    <option value="squeezed">Pendiente</option>
+                </select>
+
+                <button type="submit" id="btn-save-new-equipo">Crear</button>
+            </form>
+            <p class="modal-message" id="modal-new-message"></p>
+        </div>
+    </div>
+
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/equipos-loader.js"></script>
+    <script src="../js/equipos-creator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarEquipos(4, 'materiales');
+        });
+    </script>
+</body>
+</html>

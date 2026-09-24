@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo - Aerobots</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header class="header header-process">
+        <a href="../index.html" class="back-link" id="back-link"><- Volver</a>
+        <img src="../assets/logo-sin.png" alt="Aerobots" class="header-logo">
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="equipo-header">
+            <h1 class="equipo-title" id="equipo-title">Cargando...</h1>
+            <div class="equipo-meta">
+                <span class="step-count" id="equipo-step-count"></span>
+                <span class="badge aprobado" id="equipo-badge" style="display:none;"></span>
+                <button class="btn-action btn-edit" id="btn-edit-equipo" style="display:none;">Editar</button>
+                <button class="btn-action btn-delete" id="btn-delete-equipo" style="display:none;">Eliminar</button>
+                <button class="btn-add" id="btn-add-paso" style="display:none;">+ Nuevo Paso</button>
+            </div>
+        </section>
+
+        <section class="steps-container" id="steps-container"></section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="version">Aerobots System v1.0</p>
+    </footer>
+
+    <div class="modal-overlay" id="modal-edit-equipo">
+        <div class="modal">
+            <button class="modal-close" id="modal-edit-close">X</button>
+            <h2>Editar Equipo</h2>
+            <p class="modal-subtitle">Modifica el nombre o el estado</p>
+            <form id="form-edit-equipo">
+                <label class="form-label">Nombre del equipo</label>
+                <input type="text" id="edit-nombre" placeholder="Ej: IPC-300" required>
+
+                <label class="form-label">Descripcion (opcional)</label>
+                <input type="text" id="edit-descripcion-equipo" placeholder="Ej: Equipo de inspeccion">
+
+                <label class="form-label">Estado</label>
+                <select id="edit-estado">
+                    <option value="authorized">Aprobado</option>
+                    <option value="squeezed">Pendiente</option>
+                </select>
+
+                <button type="submit" id="btn-save-equipo">Guardar cambios</button>
+            </form>
+            <p class="modal-message" id="modal-edit-message"></p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-paso">
+        <div class="modal modal-large">
+            <button class="modal-close" id="modal-paso-close">X</button>
+            <h2 id="modal-paso-title">Nuevo Paso</h2>
+            <p class="modal-subtitle" id="modal-paso-subtitle">Completa los datos del paso</p>
+            <form id="form-paso">
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">Numero de paso</label>
+                        <input type="number" id="paso-numero" placeholder="Ej: 1" min="1" required>
+                    </div>
+                    <div class="form-col">
+                        <label class="form-label">Tipo de objeto</label>
+                        <select id="paso-tipo">
+                            <option value="">Sin tipo</option>
+                            <option value="herramienta">Herramienta</option>
+                            <option value="componente">Componente</option>
+                            <option value="material">Material</option>
+                            <option value="equipo">Equipo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="form-label">Titulo</label>
+                <input type="text" id="paso-titulo" placeholder="Ej: Preparar area de trabajo" required>
+
+                <label class="form-label">Descripcion</label>
+                <textarea id="paso-descripcion" rows="4" placeholder="Instrucciones detalladas..."></textarea>
+
+                <label class="form-label">Herramientas necesarias (una por linea)</label>
+                <textarea id="paso-herramientas" rows="3" placeholder="Desarmador Phillips&#10;Llave Allen 4mm"></textarea>
+
+                <label class="form-label">Advertencias / Notas (una por linea)</label>
+                <textarea id="paso-advertencias" rows="3" placeholder="No trabajar con la maquina encendida"></textarea>
+
+                <label class="form-label">Imagen (opcional)</label>
+                <input type="file" id="paso-imagen" accept="image/*">
+                <p class="form-help" id="paso-imagen-info"></p>
+
+                <button type="submit" id="btn-save-paso">Guardar paso</button>
+            </form>
+            <p class="modal-message" id="modal-paso-message"></p>
+        </div>
+    </div>
+
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/equipo-loader.js"></script>
+    <script src="../js/equipo-editor.js"></script>
+    <script src="../js/pasos-editor.js"></script>
+</body>
+</html>

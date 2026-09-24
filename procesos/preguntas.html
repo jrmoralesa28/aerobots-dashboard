@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas - Aerobots</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header class="header header-process">
+        <a href="../index.html" class="back-link"><- Volver</a>
+        <img src="../assets/logo-sin.png" alt="Aerobots" class="header-logo">
+        <div class="header-spacer"></div>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="equipo-header">
+            <h1 class="equipo-title">Preguntas Frecuentes</h1>
+            <div class="equipo-meta">
+                <button class="btn-add" id="btn-add-pregunta" style="display:none;">+ Nueva Pregunta</button>
+            </div>
+        </section>
+
+        <section class="faq-container" id="faq-container">
+            <!-- Las preguntas se cargan dinamicamente desde Supabase -->
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="version">Aerobots System v1.0</p>
+    </footer>
+
+    <!-- Modal crear/editar pregunta -->
+    <div class="modal-overlay" id="modal-pregunta">
+        <div class="modal modal-large">
+            <button class="modal-close" id="modal-pregunta-close">X</button>
+            <h2 id="modal-pregunta-title">Nueva Pregunta</h2>
+            <p class="modal-subtitle" id="modal-pregunta-subtitle">Completa los datos de la pregunta</p>
+            <form id="form-pregunta">
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">Categoria</label>
+                        <select id="pregunta-categoria">
+                            <option value="general">General</option>
+                            <option value="tecnica">Tecnica</option>
+                        </select>
+                    </div>
+                    <div class="form-col">
+                        <label class="form-label">Orden (opcional)</label>
+                        <input type="number" id="pregunta-orden" placeholder="Ej: 1" min="0">
+                    </div>
+                </div>
+
+                <label class="form-label">Pregunta</label>
+                <input type="text" id="pregunta-texto" placeholder="Ej: ¿Que es Aerobots?" required>
+
+                <label class="form-label">Respuesta</label>
+                <textarea id="pregunta-respuesta" rows="5" placeholder="Respuesta detallada..." required></textarea>
+
+                <button type="submit" id="btn-save-pregunta">Guardar pregunta</button>
+            </form>
+            <p class="modal-message" id="modal-pregunta-message"></p>
+        </div>
+    </div>
+
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/preguntas-loader.js"></script>
+    <script src="../js/preguntas-editor.js"></script>
+</body>
+</html>
