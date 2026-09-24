@@ -16,86 +16,8 @@
     </header>
 
     <main class="dashboard">
-        <div class="grid-container">
-
-            <a href="procesos/armado.html" class="process-card">
-                <div class="card-header">
-                    <h2>Armado</h2>
-                </div>
-                <p class="card-description">Estructura y armado de modulos</p>
-                <div class="card-status">
-                    <span class="badge aprobado">Aprobado</span>
-                </div>
-                <div class="card-footer">
-                    <span class="arrow">-></span>
-                </div>
-            </a>
-
-            <a href="procesos/mantenimiento.html" class="process-card">
-                <div class="card-header">
-                    <h2>Mantenimiento</h2>
-                </div>
-                <p class="card-description">Mantenimiento preventivo y correctivo</p>
-                <div class="card-status">
-                    <span class="badge aprobado">Aprobado</span>
-                </div>
-                <div class="card-footer">
-                    <span class="arrow">-></span>
-                </div>
-            </a>
-
-            <a href="procesos/limpieza.html" class="process-card">
-                <div class="card-header">
-                    <h2>Limpieza</h2>
-                </div>
-                <p class="card-description">Limpieza y cuidado de equipos</p>
-                <div class="card-status">
-                    <span class="badge pendiente">Pendiente</span>
-                </div>
-                <div class="card-footer">
-                    <span class="arrow">-></span>
-                </div>
-            </a>
-
-            <a href="procesos/materiales.html" class="process-card">
-                <div class="card-header">
-                    <h2>Materiales</h2>
-                </div>
-                <p class="card-description">Gestion y control de materiales</p>
-                <div class="card-status">
-                    <span class="badge aprobado">Aprobado</span>
-                </div>
-                <div class="card-footer">
-                    <span class="arrow">-></span>
-                </div>
-            </a>
-
-            <a href="procesos/preguntas.html" class="process-card">
-                <div class="card-header">
-                    <h2>Preguntas</h2>
-                </div>
-                <p class="card-description">Preguntas frecuentes y soporte</p>
-                <div class="card-status">
-                    <span class="badge aprobado">Aprobado</span>
-                </div>
-                <div class="card-footer">
-                    <span class="arrow">-></span>
-                </div>
-            </a>
-
-            <a href="#" class="process-card editor-card" id="btn-editor">
-                <div class="card-header">
-                    <h2 id="editor-card-title">Modo Editor</h2>
-                </div>
-                <p class="card-description" id="editor-card-desc">Iniciar sesion para editar procesos</p>
-                <div class="card-status">
-                    <span class="badge editor" id="editor-card-badge">Acceso restringido</span>
-                </div>
-                <div class="card-footer">
-                    <span class="arrow">-></span>
-                </div>
-            </a>
-
+        <div class="grid-container" id="categorias-container">
+            <!-- Las categorias se cargan dinamicamente desde Supabase -->
         </div>
     </main>
 
@@ -117,7 +39,32 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="modal-edit-categoria">
+        <div class="modal">
+            <button class="modal-close" id="modal-cat-close">X</button>
+            <h2>Editar Categoria</h2>
+            <p class="modal-subtitle">Modifica los datos de la categoria</p>
+            <form id="form-edit-categoria">
+                <label class="form-label">Nombre</label>
+                <input type="text" id="cat-nombre" placeholder="Ej: Armado" required>
+
+                <label class="form-label">Descripcion</label>
+                <input type="text" id="cat-descripcion" placeholder="Ej: Estructura y armado de modulos">
+
+                <label class="form-label">Estado</label>
+                <select id="cat-estado">
+                    <option value="authorized">Aprobado</option>
+                    <option value="squeezed">Pendiente</option>
+                </select>
+
+                <button type="submit" id="btn-save-categoria">Guardar cambios</button>
+            </form>
+            <p class="modal-message" id="modal-cat-message"></p>
+        </div>
+    </div>
+
     <script src="js/supabase-client.js"></script>
     <script src="js/script.js"></script>
+    <script src="../js/header-scroll.js"></script>
 </body>
 </html>
